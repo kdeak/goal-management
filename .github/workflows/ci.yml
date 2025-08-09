@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Dependencies
+      run: pip install -r backend/requirements.txt
+
+    - name: Run Backend Tests
+      run: |
+        # This is a placeholder for running backend tests.
+        # We will add actual test commands here in a future step.
+        echo "No backend tests configured yet."
+        # As a basic check, we can try to import the models.
+        python -c "from src import models; print('Models imported successfully.')"
+      working-directory: ./backend
